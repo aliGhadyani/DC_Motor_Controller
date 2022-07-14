@@ -33,6 +33,7 @@ namespace DC_Motor_PID_Controller
             comboBox2.Enabled = false;
             button2.Enabled = false;
             comboBox3.SelectedItem = comboBox3.Items[0];
+            this.serialPort1 += () => Threading.Dispatcher->invoke(updateGraph);
         }
 
         private void button1_Click(object sender, EventArgs e)
