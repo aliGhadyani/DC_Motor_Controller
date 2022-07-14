@@ -15,10 +15,13 @@ namespace DC_Motor_PID_Controller
 {
     public partial class Form1 : Form
     {
-        double Kp = 0.003;
-        double Ki = 0.003;
-        double Kd = 0.003;
+        double Kp = 0.0406812507453938;
+        double Ki = 0.339782106923304;
+        double Kd = 3.14697363162208e-5;
         double Speed = 100;
+
+        public delegate void chartData(double x, double y);
+        public chartData chartPoint;
 
         public Form1()
         {
@@ -30,12 +33,11 @@ namespace DC_Motor_PID_Controller
             {
                 comboBox2.SelectedItem = comboBox2.Items[0];
             }
-            comboBox2.Enabled = false;
             button2.Enabled = false;
             comboBox3.SelectedItem = comboBox3.Items[0];
-            this.serialPort1 += () => Threading.Dispatcher->invoke(updateGraph);
         }
 
+        // connect button
         private void button1_Click(object sender, EventArgs e)
         {
             if(comboBox1.Text=="" || comboBox2.Text == "")
@@ -51,10 +53,17 @@ namespace DC_Motor_PID_Controller
                 MessageBox.Show("Faild to connect to the device!");
                 return;
             }
+            serialPort1.ReadTimeout = 5;
             button1.Enabled = false;
             button2.Enabled = true;
+            comboBox1.Enabled = false;
+            comboBox2.Enabled = false;
+            if(chart.Series[0].Points.Count > 0)
+                chart.Series[0].Points.Clear();
+            this.chartPoint += new chartData(updateGraph);
         }
 
+        // disconnect button
         private void button2_Click(object sender, EventArgs e)
         {
             serialPort1.Close();
@@ -65,8 +74,18 @@ namespace DC_Motor_PID_Controller
             }
             button1.Enabled = true;
             button2.Enabled = false;
+            comboBox1.Enabled = true;
+            comboBox2.Enabled = true;
+            this.chartPoint -= new chartData(updateGraph);
+            String[] portList = SerialPort.GetPortNames();
+            comboBox2.Items.AddRange(portList);
+            if (portList.Length > 0)
+            {
+                comboBox2.SelectedItem = comboBox2.Items[0];
+            }
         }
 
+        // Mode 
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(comboBox3.Text == "PID")
@@ -136,7 +155,25 @@ namespace DC_Motor_PID_Controller
 
         private void readSerial(object sender, SerialDataReceivedEventArgs e)
         {
-            string data = serialPort1.ReadLine();
+            string data;
+            try
+            {
+                data = serialPort1.ReadLine();
+            }
+            catch
+            {
+                return;
+            }
+            System.Console.WriteLine(data);
+            string[] args = data.Split('|');
+            try
+            {
+                chart.Invoke(this.chartPoint, new Object[] { Int64.Parse(args[1]), Double.Parse(args[0]) });
+            }
+            catch
+            {
+                return;
+            }
         }
 
         private void updateGraph(double x, double y)
@@ -149,13 +186,15 @@ namespace DC_Motor_PID_Controller
         {
             if (!serialPort1.IsOpen)
             {
+                MessageBox.Show("Device has been disconnected!\nDisconnect and try again.");
                 return;
             }
-            String data = (1).ToString() + '|' +
-                            Convert.ToDouble(textBox2.Text).ToString() + '|' +
-                            Convert.ToDouble(textBox5.Text).ToString() + '|' +
-                            Convert.ToDouble(textBox4.Text).ToString() + '|' +
-                            Convert.ToDouble(numericUpDown1.Text).ToString();
+            int s = Int32.Parse(numericUpDown1.Text);
+            String data  =  ((s<0) ? 1:0).ToString() + '|' +                // direection
+                            Double.Parse(textBox2.Text).ToString() + '|' +  // Kp
+                            Double.Parse(textBox5.Text).ToString() + '|' +  // Ki
+                            Double.Parse(textBox4.Text).ToString() + '|' +  // Kd
+                            Int32.Parse(numericUpDown1.Text).ToString();    // Speed
             serialPort1.WriteLine(data);
         }
     }
