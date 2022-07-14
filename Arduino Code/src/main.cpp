@@ -17,11 +17,13 @@ double Kd = 3.14697363162208e-5;
 long int targetSpeed = 10*PPR;
 double integrral = 0;
 
-long int currentTime = 0;
-long int previousTime = 0;
+unsigned long int currentTime = 0;
+unsigned long int previousTime = 0;
 
 long int pos = 0;
 long int previousError = 0;
+
+unsigned long int startTime = 0;
 
 void updateSetting(){
   String data = Serial.readString();
@@ -63,14 +65,14 @@ void setDirection(){
 
 void setup() {
   Serial.begin(9600);
-  pinMode(ENCA, INPUT);
-  pinMode(ENCB, INPUT);
+  pinMode(ENCA, INPUT_PULLUP);
+  pinMode(ENCB, INPUT_PULLUP);
   attachInterrupt(digitalPinToInterrupt(ENCA), encoderInterrupt, RISING);
 
   pinMode(ENA, OUTPUT);
   pinMode(IN1, OUTPUT);
   pinMode(IN2, OUTPUT);
-  Serial.println("ok");
+  startTime = micros();
 }
 
 void loop() {
@@ -79,9 +81,9 @@ void loop() {
   }
   long int currentPos = pos;
   pos = 0;
-  currentTime = micros();
+  currentTime = micros() - startTime;
   // report current speed
-  Serial.println(String(currentPos, DEC)+"|"+String(currentTime, DEC));
+  Serial.println(String(currentPos, DEC)+"|"+String(currentTime/1000, DEC));
   long int error_value = currentPos - targetSpeed;
   // product term
   double p = Kp*error_value;
