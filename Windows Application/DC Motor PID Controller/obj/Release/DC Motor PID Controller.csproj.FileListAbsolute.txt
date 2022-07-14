@@ -1,0 +1,9 @@
+c:\users\ghadyani\documents\visual studio 2013\Projects\DC Motor PID Controller\DC Motor PID Controller\bin\Release\DC Motor PID Controller.exe.config
+c:\users\ghadyani\documents\visual studio 2013\Projects\DC Motor PID Controller\DC Motor PID Controller\bin\Release\DC Motor PID Controller.exe
+c:\users\ghadyani\documents\visual studio 2013\Projects\DC Motor PID Controller\DC Motor PID Controller\bin\Release\DC Motor PID Controller.pdb
+c:\users\ghadyani\documents\visual studio 2013\Projects\DC Motor PID Controller\DC Motor PID Controller\obj\Release\DC Motor PID Controller.csprojResolveAssemblyReference.cache
+c:\users\ghadyani\documents\visual studio 2013\Projects\DC Motor PID Controller\DC Motor PID Controller\obj\Release\DC_Motor_PID_Controller.Form1.resources
+c:\users\ghadyani\documents\visual studio 2013\Projects\DC Motor PID Controller\DC Motor PID Controller\obj\Release\DC_Motor_PID_Controller.Properties.Resources.resources
+c:\users\ghadyani\documents\visual studio 2013\Projects\DC Motor PID Controller\DC Motor PID Controller\obj\Release\DC Motor PID Controller.csproj.GenerateResource.Cache
+c:\users\ghadyani\documents\visual studio 2013\Projects\DC Motor PID Controller\DC Motor PID Controller\obj\Release\DC Motor PID Controller.exe
+c:\users\ghadyani\documents\visual studio 2013\Projects\DC Motor PID Controller\DC Motor PID Controller\obj\Release\DC Motor PID Controller.pdb
