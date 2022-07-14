@@ -24,7 +24,6 @@ namespace DC_Motor_PID_Controller
         {
             InitializeComponent();
             comboBox1.SelectedItem = comboBox1.Items[5];
-            //comboBox1.Enabled = false;
             String[] portList = SerialPort.GetPortNames();
             comboBox2.Items.AddRange(portList);
             if(portList.Length > 0)
@@ -34,14 +33,13 @@ namespace DC_Motor_PID_Controller
             comboBox2.Enabled = false;
             button2.Enabled = false;
             comboBox3.SelectedItem = comboBox3.Items[0];
-
-            //serialPort1.
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             if(comboBox1.Text=="" || comboBox2.Text == "")
             {
+                MessageBox.Show("Baud Rate or Port is empty!");
                 return;
             }
             serialPort1.PortName = comboBox2.Text;
@@ -70,10 +68,6 @@ namespace DC_Motor_PID_Controller
 
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(!serialPort1.IsOpen)
-            {
-                return;
-            }
             if(comboBox3.Text == "PID")
             {
                 textBox2.Enabled = true;
@@ -82,7 +76,6 @@ namespace DC_Motor_PID_Controller
                 textBox5.Text = Ki.ToString();
                 textBox4.Enabled = true;
                 textBox4.Text = Kd.ToString();
-                sendCommand();
             }
             else if(comboBox3.Text == "PI")
             {
@@ -93,7 +86,6 @@ namespace DC_Motor_PID_Controller
                 textBox4.Enabled = false;
                 Kd = (textBox4.Text != (0.0).ToString()) ? Convert.ToDouble(textBox4.Text) : Kd;
                 textBox4.Text = (0.0).ToString();
-                sendCommand();
             }
             else if (comboBox3.Text == "PD")
             {
@@ -104,7 +96,6 @@ namespace DC_Motor_PID_Controller
                 textBox5.Text = (0.0).ToString();
                 textBox4.Enabled = true;
                 textBox4.Text = Kd.ToString();
-                sendCommand();
             }
             else if (comboBox3.Text == "P")
             {
@@ -117,7 +108,6 @@ namespace DC_Motor_PID_Controller
                 textBox4.Enabled = false;
                 Kd = (textBox4.Text != (0.0).ToString()) ? Convert.ToDouble(textBox4.Text) : Kd;
                 textBox4.Text = (0.0).ToString();
-                sendCommand();
             }
             else if (comboBox3.Text == "I")
             {
@@ -129,7 +119,6 @@ namespace DC_Motor_PID_Controller
                 textBox4.Enabled = false;
                 Kd = (textBox4.Text != (0.0).ToString()) ? Convert.ToDouble(textBox4.Text) : Kd;
                 textBox4.Text = (0.0).ToString();
-                sendCommand();
             }
             else if (comboBox3.Text == "D")
             {
@@ -141,23 +130,23 @@ namespace DC_Motor_PID_Controller
                 textBox5.Text = (0.0).ToString();
                 textBox4.Enabled = true;
                 textBox4.Text = Kd.ToString();
-                sendCommand();
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void readSerial(object sender, SerialDataReceivedEventArgs e)
         {
-
+            string data = serialPort1.ReadLine();
         }
 
-        private void NumericUpDown1_ValueChanged(object sender, EventArgs e)
+        private void updateGraph(double x, double y)
         {
-            serialPort1.Write(numericUpDown1.Value.ToString());
+            chart.Series[0].Points.AddXY(x, y);
+            chart.Update();
         }
 
-        private void sendCommand()
+        private void button3_Click(object sender, EventArgs e)
         {
-            if(!serialPort1.IsOpen)
+            if (!serialPort1.IsOpen)
             {
                 return;
             }
@@ -167,14 +156,6 @@ namespace DC_Motor_PID_Controller
                             Convert.ToDouble(textBox4.Text).ToString() + '|' +
                             Convert.ToDouble(numericUpDown1.Text).ToString();
             serialPort1.WriteLine(data);
-            while (serialPort1.BytesToRead == 0) ;
-            textBox3.Text = serialPort1.ReadLine();
-        }
-
-        private void readSerial(object sender, SerialDataReceivedEventArgs e)
-        {
-            string data = serialPort1.ReadLine();
-            textBox3.Text = data;
         }
     }
 }

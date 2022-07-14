@@ -17,3 +17,13 @@ C:\Users\sepehr\Desktop\DC Motor PID Controller\DC Motor PID Controller\obj\Debu
 C:\Users\sepehr\Desktop\DC Motor PID Controller\DC Motor PID Controller\obj\Debug\DC Motor PID Controller.csproj.CoreCompileInputs.cache
 C:\Users\sepehr\Desktop\DC Motor PID Controller\DC Motor PID Controller\obj\Debug\DC Motor PID Controller.exe
 C:\Users\sepehr\Desktop\DC Motor PID Controller\DC Motor PID Controller\obj\Debug\DC Motor PID Controller.pdb
+D:\ELearn\Term 6\LCS\Proj\DC_Motor_Controller\Windows Application\DC Motor PID Controller\obj\Debug\DC Motor PID Controller.csprojAssemblyReference.cache
+D:\ELearn\Term 6\LCS\Proj\DC_Motor_Controller\Windows Application\DC Motor PID Controller\obj\Debug\DC_Motor_PID_Controller.Form1.resources
+D:\ELearn\Term 6\LCS\Proj\DC_Motor_Controller\Windows Application\DC Motor PID Controller\obj\Debug\DC_Motor_PID_Controller.Properties.Resources.resources
+D:\ELearn\Term 6\LCS\Proj\DC_Motor_Controller\Windows Application\DC Motor PID Controller\obj\Debug\DC Motor PID Controller.csproj.GenerateResource.cache
+D:\ELearn\Term 6\LCS\Proj\DC_Motor_Controller\Windows Application\DC Motor PID Controller\obj\Debug\DC Motor PID Controller.csproj.CoreCompileInputs.cache
+D:\ELearn\Term 6\LCS\Proj\DC_Motor_Controller\Windows Application\DC Motor PID Controller\obj\Debug\DC Motor PID Controller.exe
+D:\ELearn\Term 6\LCS\Proj\DC_Motor_Controller\Windows Application\DC Motor PID Controller\obj\Debug\DC Motor PID Controller.pdb
+D:\ELearn\Term 6\LCS\Proj\DC_Motor_Controller\Windows Application\DC Motor PID Controller\bin\Debug\DC Motor PID Controller.exe.config
+D:\ELearn\Term 6\LCS\Proj\DC_Motor_Controller\Windows Application\DC Motor PID Controller\bin\Debug\DC Motor PID Controller.exe
+D:\ELearn\Term 6\LCS\Proj\DC_Motor_Controller\Windows Application\DC Motor PID Controller\bin\Debug\DC Motor PID Controller.pdb
