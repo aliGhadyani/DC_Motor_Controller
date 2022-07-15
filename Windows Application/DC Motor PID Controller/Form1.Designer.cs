@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -154,9 +154,9 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(120, 21);
             this.comboBox1.TabIndex = 3;
-            //
+            // 
             // serialPort1
-            //
+            // 
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.readSerial);
             // 
             // groupBox2
@@ -208,7 +208,7 @@
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(152, 20);
             this.textBox5.TabIndex = 7;
-            this.textBox5.Text = "0.0339782106923304";
+            this.textBox5.Text = "0.339782106923304";
             // 
             // textBox4
             // 
@@ -216,7 +216,7 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(152, 20);
             this.textBox4.TabIndex = 6;
-            this.textBox4.Text = "3.14697363162208e-05";
+            this.textBox4.Text = "0.000031469736315";
             // 
             // textBox2
             // 
@@ -224,7 +224,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(152, 20);
             this.textBox2.TabIndex = 4;
-            this.textBox2.Text = "0.00206812507453938";
+            this.textBox2.Text = "0.0406812507453938";
             // 
             // label6
             // 
@@ -255,20 +255,24 @@
             // 
             // chart
             // 
-            chartArea1.AxisX.Title = "Time(ms)";
-            chartArea1.AxisY.Title = "Speed(round/s)";
-            chartArea1.Name = "ChartArea1";
-            this.chart.ChartAreas.Add(chartArea1);
-            this.chart.Location = new System.Drawing.Point(232, 48);
+            this.chart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            chartArea2.AxisX.Title = "Time(ms)";
+            chartArea2.AxisY.Title = "Speed(round/s)";
+            chartArea2.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea2);
+            this.chart.Location = new System.Drawing.Point(230, 40);
             this.chart.Name = "chart";
             this.chart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Name = "Series1";
-            this.chart.Series.Add(series1);
-            this.chart.Size = new System.Drawing.Size(468, 359);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Name = "Series1";
+            this.chart.Series.Add(series2);
+            this.chart.Size = new System.Drawing.Size(471, 367);
             this.chart.TabIndex = 5;
             this.chart.Text = "chart1";
+            this.chart.Click += new System.EventHandler(this.chart_Click);
             // 
             // groupBox3
             // 
@@ -292,6 +296,11 @@
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(145, 20);
             this.numericUpDown1.TabIndex = 4;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             // 
             // label4
             // 

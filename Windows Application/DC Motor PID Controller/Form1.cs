@@ -66,7 +66,11 @@ namespace DC_Motor_PID_Controller
         // disconnect button
         private void button2_Click(object sender, EventArgs e)
         {
-            serialPort1.Close();
+            serialPort1.DiscardInBuffer();
+            if (serialPort1.IsOpen)
+                serialPort1.Close();
+            else
+                return;
             if (serialPort1.IsOpen)
             {
                 MessageBox.Show("Faild to disconnect the device!");
@@ -178,6 +182,8 @@ namespace DC_Motor_PID_Controller
 
         private void updateGraph(double x, double y)
         {
+            if (y == 1)
+                return;
             chart.Series[0].Points.AddXY(x, y);
             chart.Update();
         }
@@ -196,6 +202,11 @@ namespace DC_Motor_PID_Controller
                             Double.Parse(textBox4.Text).ToString() + '|' +  // Kd
                             Int32.Parse(numericUpDown1.Text).ToString();    // Speed
             serialPort1.WriteLine(data);
+        }
+
+        private void chart_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
