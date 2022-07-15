@@ -36,7 +36,7 @@ void updateSetting(){
   sep = data.indexOf('|', sep+1);
   Kd = data.substring(sep+1, data.indexOf('|', sep+1)).toDouble();
   sep = data.indexOf('|', sep+1);
-  targetSpeed = data.substring(sep+1, data.indexOf('|', sep+1)).toDouble();
+  targetSpeed = data.substring(sep+1, data.length()).toInt()*PPR;
 }
 
 // checks if chanel a raised earlier then count up position
